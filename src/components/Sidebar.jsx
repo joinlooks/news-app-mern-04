@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function Sidebar({ sidebarRef, setSidebarOpen }) {
+function Sidebar({ isSidebarOpen, sidebarRef, setSidebarOpen, setCategory }) {
 	useEffect(() => {
 		// Function to handle outside clicks
 		function handleClickOutside(event) {
@@ -19,6 +19,11 @@ function Sidebar({ sidebarRef, setSidebarOpen }) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	function changeCategory(category) {
+		setCategory(category);
+		setSidebarOpen(false);
+	}
+
 	return (
 		<>
 			<ul
@@ -28,18 +33,49 @@ function Sidebar({ sidebarRef, setSidebarOpen }) {
 					setSidebarOpen ? "translate-x-0" : "-translate-x-full"
 				}`}
 			>
-				<li>All</li>
-				<li>National</li>
-				<li>International</li>
-				<li>Business</li>
-				<li>Science</li>
-				<li>Sports</li>
-				<li>Technology</li>
-				<li>World</li>
-				<li>Startups</li>
-				<li>Politics</li>
-				<li>Automobile</li>
-				<li>Entertainment</li>
+				<li className="text-4xl my-2">BriefIt</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("general")}
+				>
+					<button>General</button>
+				</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("health")}
+				>
+					<button>Health</button>
+				</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("science")}
+				>
+					<button>Science</button>
+				</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("business")}
+				>
+					<button>Business</button>
+				</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("sports")}
+				>
+					<button>Sports</button>
+				</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("technology")}
+				>
+					<button>Technology</button>
+				</li>
+				<li
+					className="hover:text-blue-100 cursor-pointer"
+					onClick={() => changeCategory("entertainment")}
+				>
+					<button>Entertainment</button>
+				</li>
 			</ul>
 		</>
 	);

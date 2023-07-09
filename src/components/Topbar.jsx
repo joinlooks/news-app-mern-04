@@ -1,7 +1,11 @@
-function Topbar({ isSidebarOpen, setSidebarOpen }) {
+function Topbar({ isSidebarOpen, setSidebarOpen, category, setCategory }) {
 	function toggleSidebar() {
 		setSidebarOpen(isSidebarOpen === true ? false : true);
 		console.log("clicked");
+	}
+
+	function capitalizeFirstLetter(word) {
+		return word.charAt(0).toUpperCase() + word.slice(1);
 	}
 
 	return (
@@ -26,14 +30,53 @@ function Topbar({ isSidebarOpen, setSidebarOpen }) {
 						/>
 					</svg>
 				</button>
-				<h1 className="text-4xl hover:text-blue-900">BriefIt</h1>
-				<ul className="hidden lg:flex justify-center items-center gap-3 text-xl">
-					<li className="hover:text-blue-900">All</li>
-					<li className="hover:text-blue-900">International</li>
-					<li className="hover:text-blue-900">Science</li>
-					<li className="hover:text-blue-900">National</li>
-					<li className="hover:text-blue-900">Sports</li>
-					<li className="hover:text-blue-900">Technology</li>
+				<h1 className="text-4xl flex hover:text-blue-900 cursor-pointer">
+					<div className="lg:block hidden">BriefIt&nbsp;</div>{" "}
+					{capitalizeFirstLetter(category)}
+				</h1>
+				<ul className="hidden lg:flex justify-center items-center gap-3 text-xl overflow-x-auto">
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("general")}
+					>
+						<button>General</button>
+					</li>
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("health")}
+					>
+						<button>Health</button>
+					</li>
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("science")}
+					>
+						<button>Science</button>
+					</li>
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("business")}
+					>
+						<button>Business</button>
+					</li>
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("sports")}
+					>
+						<button>Sports</button>
+					</li>
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("technology")}
+					>
+						<button>Technology</button>
+					</li>
+					<li
+						className="hover:text-blue-900 cursor-pointer"
+						onClick={() => setCategory("entertainment")}
+					>
+						<button>Entertainment</button>
+					</li>
 				</ul>
 			</nav>
 		</>
