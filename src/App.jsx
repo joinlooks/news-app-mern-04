@@ -22,7 +22,7 @@ function App() {
 		try {
 			const response = await (await fetch(url)).json();
 			setAllNews(response.articles);
-			console.log(response.articles);
+			// console.log(response.articles);
 		} catch (error) {
 			console.log(error);
 		}
